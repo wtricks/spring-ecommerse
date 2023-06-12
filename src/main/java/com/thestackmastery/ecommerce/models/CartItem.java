@@ -14,12 +14,12 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Entity
 @Table(name = "cart")
-public class Cart {
+public class CartItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 

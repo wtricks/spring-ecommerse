@@ -16,6 +16,7 @@ public class UserController {
 
     @PutMapping(path = "create-user")
     public ResponseEntity<?> createUserAccount(@RequestBody(required = true) User user) {
+        service.createNewUserAccount(user);
         return ResponseEntity.ok("");
     }
 

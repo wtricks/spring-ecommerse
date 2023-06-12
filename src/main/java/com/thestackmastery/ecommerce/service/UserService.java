@@ -45,7 +45,11 @@ public class UserService {
     }
 
     public boolean removeUserDetails(Long userId) {
-         repo.deleteById(userId);
-         return true;
+        repo.deleteById(userId);
+        return true;
+    }
+
+    public void createNewUserAccount(User user) {
+        repo.save(user);
     }
 }

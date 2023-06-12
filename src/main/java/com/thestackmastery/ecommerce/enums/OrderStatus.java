@@ -1,19 +1,13 @@
 package com.thestackmastery.ecommerce.enums;
 
 public enum OrderStatus {
-    PENDING("Pending"),
-    PROCESSING("Processing"),
-    SHIPPED("Shipped"),
-    DELIVERED("Delivered"),
-    CANCELLED("Cancelled");
+    PENDING,
 
-    private final String displayName;
+    PROCESSING,
 
-    OrderStatus(String displayName) {
-        this.displayName = displayName;
-    }
+    SHIPPED,
 
-    public String getDisplayName() {
-        return displayName;
-    }
+    DELIVERED,
+
+    CANCELLED
 }
