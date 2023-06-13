@@ -49,7 +49,22 @@ public class UserService {
         return true;
     }
 
-    public void createNewUserAccount(User user) {
+    public User createNewUserAccount(User user) throws UserNotFound {
+        if (repo.existsByEmailAddress(user.getEmailAddress()) != null) {
+            throw new UserNotFound("Email address is already taken.");
+        }
+
         repo.save(user);
+        return repo.save(user);
+    }
+
+    public User getUserById(Long userId) throws UserNotFound {
+        Optional<User> user = repo.findById(userId);
+
+        if (user.isEmpty()) {
+            throw new UserNotFound("User is not found.");
+        } 
+
+        return user.get();
     }
 }

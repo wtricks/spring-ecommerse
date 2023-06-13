@@ -30,7 +30,7 @@ public class Order {
 
     private int totalAmount;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItem;
 
     @Temporal(TemporalType.TIMESTAMP)

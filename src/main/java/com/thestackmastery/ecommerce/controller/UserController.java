@@ -15,19 +15,21 @@ public class UserController {
     private UserService service;
 
     @PutMapping(path = "create-user")
-    public ResponseEntity<?> createUserAccount(@RequestBody(required = true) User user) {
-        service.createNewUserAccount(user);
-        return ResponseEntity.ok("");
+    public ResponseEntity<?> createUserAccount(@RequestBody(required = true) User user) throws UserNotFound {
+        User addedUser = service.createNewUserAccount(user);
+        return ResponseEntity.ok(addedUser);
     }
 
     @PostMapping(path = "authenticate-user")
     public ResponseEntity<?> loginToUserAccount() {
+        //
         return ResponseEntity.ok("");
     }
 
     @GetMapping(path = "user-detail/{userId}")
-    public ResponseEntity<?> getCurrentUserDetail(@PathVariable("userId") Long userId) {
-        return ResponseEntity.ok("");
+    public ResponseEntity<?> getCurrentUserDetail(@PathVariable("userId") Long userId) throws UserNotFound {
+        User user = service.getUserById(userId);
+        return ResponseEntity.ok(user);
     }
 
     @PostMapping(path = "update-user/{userId}")
